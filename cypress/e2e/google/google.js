@@ -1,18 +1,26 @@
-import { Given, When, Then } from "cypress-cucumber-preprocessor/steps";
+import { Given, When, Then, And } from "cypress-cucumber-preprocessor/steps";
 
 Given("go to web", ()=>{
     cy.visit("https://fm-dev.sitearound.com/")
 })
 
-When("action", ()=>{
+When("Login {string} and {string}", (username, password)=>{
     cy.get("#login-form_username")
-    .type("superadmin@swiftdynamics.co.th")
+    .type(username)
     cy.get("#login-form_password")
-    .type("12345678")
-    .type("{enter}")
-    cy.get("h1.mb-0").should("be.visible")
+    .type(password)
 })
 
-Then("end", ()=>{
-    cy.wait(4000)
+Then("Enter for Login", ()=>{
+    cy.get("#login-form_password")
+    .type("{enter}")
+})
+
+When ("Wait to Loading page", ()=>{
+    cy.wait()
+})
+
+And("Check Wording {string}", (wording)=>{
+    cy.get("h1.mb-0")
+    .should('have,text', wording)
 })
