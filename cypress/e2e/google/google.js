@@ -1,26 +1,14 @@
 import { Given, When, Then, And } from "cypress-cucumber-preprocessor/steps";
 
-Given("go to web", ()=>{
-    cy.visit("https://fm-dev.sitearound.com/")
+Given("go to web and login {string} and {string}", (username, password)=>{
+    cy.login(username , password)
 })
 
-When("Login {string} and {string}", (username, password)=>{
-    cy.get("#login-form_username")
-    .type(username)
-    cy.get("#login-form_password")
-    .type(password)
+When("Enter for Login", ()=>{
+    cy.get('h1.mb-0').should('be.visible')
 })
 
-Then("Enter for Login", ()=>{
-    cy.get("#login-form_password")
-    .type("{enter}")
-})
-
-When ("Wait to Loading page", ()=>{
-    cy.wait()
-})
-
-And("Check Wording {string}", (wording)=>{
+Then("Wait to Loading page and Check Word {string}", (wording)=>{
     cy.get("h1.mb-0")
-    .should('have,text', wording)
+    .should('have.text', wording)
 })

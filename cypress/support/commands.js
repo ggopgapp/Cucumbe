@@ -10,7 +10,11 @@
 //
 //
 // -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
+Cypress.Commands.add('login', (username, password) => { 
+    cy.visit("https://fm-dev.sitearound.com/")
+    cy.get("#login-form_username").type(username)
+    cy.get("#login-form_password").type(password).type('{enter}')
+ })
 //
 //
 // -- This is a child command --
@@ -23,3 +27,4 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
