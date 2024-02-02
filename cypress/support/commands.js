@@ -10,10 +10,11 @@
 //
 //
 // -- This is a parent command --
-Cypress.Commands.add('login', (username, password) => { 
-    cy.visit("https://fm-dev.sitearound.com/")
-    cy.get("#login-form_username").type(username)
-    cy.get("#login-form_password").type(password).type('{enter}')
+Cypress.Commands.add('login', () => { 
+    cy.visit(Cypress.env('baseUrl'))
+    cy.get("#login-form_username").type(Cypress.env('adminUsername'))
+    cy.get("#login-form_password").type(Cypress.env('adminPassword')).type('{enter}')
+    cy.get('h1.mb-0').should('be.visible')
  })
 //
 //
