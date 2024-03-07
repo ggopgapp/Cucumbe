@@ -1,5 +1,10 @@
 Feature: FM
 ฺ
-Scenario: Login
+Scenario: Create Reward
 Given go to web and login
-When Wait to Loading page and Check Word 'Facilities Summary Data'
+When go to Reward Menagement Menu
+Then Check 'ของรางวัล' Page
+When Select Project 'TCP Connect-VAN'
+When Select Catalog 'ทดสอบ01'
+When Input Detail Reward
+

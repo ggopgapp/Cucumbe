@@ -2,6 +2,7 @@ const cucumber = require('cypress-cucumber-preprocessor').default
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
+  projectId: 'dn9bpr',
   e2e: {
     hideXHRInCommandLog: true,
     viewportWidth: 1920,

@@ -12,9 +12,9 @@
 // -- This is a parent command --
 Cypress.Commands.add('login', () => { 
     cy.visit(Cypress.env('baseUrl'))
-    cy.get("#login-form_username").type(Cypress.env('adminUsername'))
-    cy.get("#login-form_password").type(Cypress.env('adminPassword')).type('{enter}')
-    cy.get('h1.mb-0').should('be.visible')
+    cy.wait(5000)
+    cy.get('.mat-form-field.ng-tns-c63-15 > .mat-form-field-wrapper > .mat-form-field-flex > .mat-form-field-infix').type(Cypress.env('username'))
+    cy.get('.mat-form-field-hide-placeholder > .mat-form-field-wrapper > .mat-form-field-flex').type(Cypress.env('password')).type('{enter}')
  })
 //
 //
@@ -28,4 +28,3 @@ Cypress.Commands.add('login', () => {
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-
